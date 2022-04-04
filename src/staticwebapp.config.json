@@ -46,9 +46,23 @@
       "rewrite": null
     }
   ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": null
+  },
   "responseOverrides": {
     "401": {
       "redirect": "/login",
+      "statusCode": 302
+    },
+    "UnauthorizedPage": {
+      "redirect": "/login",
+      "rewrite": null,
+      "statusCode": 302
+    },
+    "UnauthorizedPageNoUser": {
+      "redirect": "/login",
+      "rewrite": null,
       "statusCode": 302
     }
   }
