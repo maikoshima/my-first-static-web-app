@@ -12,19 +12,38 @@
   },
   "routes": [
     {
-      "route": "/",
-      "statusCode": 200,
-      "allowedRoles": [
-        "authenticated"
-      ]
-    },
-    {
       "route": "/login",
-      "rewrite": "/.auth/login/aad"
+      "methods": null,
+      "allowedRoles": [],
+      "statusCode": null,
+      "redirect": "/.auth/login/aad",
+      "rewrite": null
     },
     {
       "route": "/logout",
-      "redirect": "/.auth/logout"
+      "methods": null,
+      "allowedRoles": [],
+      "statusCode": null,
+      "redirect": "/.auth/logout",
+      "rewrite": null
+    },
+    {
+      "route": "/.auth/login/aad/callback",
+      "methods": null,
+      "allowedRoles": [],
+      "statusCode": null,
+      "redirect": "/",
+      "rewrite": null
+    },
+    {
+      "route": "/*",
+      "methods": null,
+      "allowedRoles": [
+        "authenticated"
+      ],
+      "statusCode": null,
+      "redirect": null,
+      "rewrite": null
     }
   ],
   "responseOverrides": {
