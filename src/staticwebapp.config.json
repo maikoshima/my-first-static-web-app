@@ -3,7 +3,7 @@
     "identityProviders": {
       "azureActiveDirectory": {
         "registration": {
-          "openIdIssuer": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/v2.0",
+          "openIdIssuer": "https://login.microsoftonline.com/a85a6207-dd48-4ab6-a6bd-5ef4dbbc97ff/v2.0",
           "clientIdSettingName": "AAD_CLIENT_ID",
           "clientSecretSettingName": "AAD_CLIENT_SECRET"
         }
@@ -13,57 +13,28 @@
   "routes": [
     {
       "route": "/login",
-      "methods": null,
-      "allowedRoles": [],
-      "statusCode": null,
-      "redirect": "/.auth/login/aad",
-      "rewrite": null
+      "redirect": "/.auth/login/aad"
     },
     {
       "route": "/logout",
-      "methods": null,
-      "allowedRoles": [],
-      "statusCode": null,
-      "redirect": "/.auth/logout",
-      "rewrite": null
+      "redirect": "/.auth/logout"
     },
     {
       "route": "/.auth/login/aad/callback",
-      "methods": null,
-      "allowedRoles": [],
-      "statusCode": null,
-      "redirect": "/",
-      "rewrite": null
+      "redirect": "/"
     },
     {
       "route": "/*",
-      "methods": null,
-      "allowedRoles": [
-        "authenticated"
-      ],
-      "statusCode": null,
-      "redirect": null,
-      "rewrite": null
+      "allowedRoles": ["authenticated"]
     }
   ],
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": null
-  },
   "responseOverrides": {
     "401": {
       "redirect": "/login",
       "statusCode": 302
-    },
-    "UnauthorizedPage": {
-      "redirect": "/login",
-      "rewrite": null,
-      "statusCode": 302
-    },
-    "UnauthorizedPageNoUser": {
-      "redirect": "/login",
-      "rewrite": null,
-      "statusCode": 302
     }
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html"
   }
 }
