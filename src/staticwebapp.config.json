@@ -52,7 +52,7 @@
       "X-Azure-FDID" : "6d054e11-7046-444d-8122-b4dad00f8244"
     },
     "allowedForwardedHosts": [
-      "my-sitename.azurefd.net"
+      "maikoshima-swa-01-front-door-endpoint-e4e8dqhefcebe8ea.z01.azurefd.net"
     ]
   }
 }
