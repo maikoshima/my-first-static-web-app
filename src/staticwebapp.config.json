@@ -1,58 +1,42 @@
 {
-  "auth": {
-    "identityProviders": {
-      "azureActiveDirectory": {
-        "registration": {
-          "openIdIssuer": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/v2.0",
-          "clientIdSettingName": "AAD_CLIENT_ID",
-          "clientSecretSettingName": "AAD_CLIENT_SECRET"
+    "auth": {
+        "identityProviders": {
+            "azureActiveDirectory": {
+                "registration": {
+                    "openIdIssuer": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/v2.0",
+                    "clientIdSettingName": "AAD_CLIENT_ID",
+                    "clientSecretSettingName": "AAD_CLIENT_SECRET"
+                }
+            }
         }
-      }
+    },
+    "routes": [
+        {
+            "route": "/*",
+            "statusCode": 200,
+            "allowedRoles": [
+                "authenticated"
+            ]
+        },
+        {
+            "route": "/api/*",
+            "allowedRoles": [
+                "authenticated"
+            ]
+        },
+        {
+            "route": "/login",
+            "rewrite": "/.auth/login/aad"
+        },
+        {
+            "route": "/logout",
+            "redirect": "/.auth/logout"
+        }
+    ],
+    "responseOverrides": {
+        "401": {
+            "redirect": "/login",
+            "statusCode": 302
+        }
     }
-  },
-  "routes": [
-    {
-      "route": "/login",
-      "redirect": "/.auth/login/aad"
-    },
-    {
-      "route": "/logout",
-      "redirect": "/.auth/logout"
-    },
-    {
-      "route": "/.auth/login/aad/callback",
-      "redirect": "/"
-    },
-    {
-      "route": "/*",
-      "allowedRoles": ["authenticated"]
-    },
-    {
-      "route": "/members",
-      "allowedRoles": ["authenticated", "members"],
-      "headers": {
-        "Cache-Control": "no-store"
-      }
-    }
-  ],
-  "responseOverrides": {
-    "401": {
-      "redirect": "/login",
-      "statusCode": 302
-    }
-  },
-  "navigationFallback": {
-    "rewrite": "/index.html"
-  },
-  "networking": {
-    "allowedIpRanges": ["AzureFrontDoor.Backend"]
-  },
-  "forwardingGateway": {
-    "requiredHeaders": {
-      "X-Azure-FDID" : "6d054e11-7046-444d-8122-b4dad00f8244"
-    },
-    "allowedForwardedHosts": [
-      "maikoshima-swa-01-front-door-endpoint-e4e8dqhefcebe8ea.z01.azurefd.net"
-    ]
-  }
 }
