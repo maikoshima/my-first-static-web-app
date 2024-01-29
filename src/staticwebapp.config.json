@@ -4,9 +4,5 @@
             "route": "/*",
             "statusCode": 200
         }
-    ],
-    "globalHeaders": {
-        "Access-Control-Allow-Origin": "https://nice-pebble-01aeed500.4.azurestaticapps.net",
-        "Access-Control-Allow-Methods": "GET, OPTIONS"
-    }
+    ]
 }
