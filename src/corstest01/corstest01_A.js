@@ -1,4 +1,4 @@
-fetch("https://ashy-stone-0b6008500.4.azurestaticapps.net/corstest02/corstest02.js")
+fetch("https://ashy-stone-0b6008500.4.azurestaticapps.net/corstest02/corstest02.html")
   .then(response => {
     return response.json();
   })
