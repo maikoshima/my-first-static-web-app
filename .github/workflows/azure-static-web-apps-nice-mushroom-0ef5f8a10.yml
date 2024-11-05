@@ -11,7 +11,8 @@ name: Azure Static Web Apps CI/CD
 
 on:
   schedule:
-    - cron: "35 * * * *"
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '41 * * * *'
 
 jobs:
   build_and_deploy_job:
