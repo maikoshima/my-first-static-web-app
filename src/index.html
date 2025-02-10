@@ -16,7 +16,7 @@
 
   <script>
     (async function() {
-        const { text } = await( await fetch(`/api/swatest01`)).textContent();
+        const { text } = await( await fetch(`/api/swatest01`)).json();
         console.log(text);
         document.querySelector('#name').textContent = text;
     }());
