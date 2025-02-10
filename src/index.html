@@ -16,7 +16,7 @@
 
   <script>
     (async function() {
-        const res = await fetch(`/api/swatest01`);
+        const res = await fetch(`/api/swatest01?name=Vanilla`);
         console.log(res);
         const txt = await res.text();
         console.log(txt);
