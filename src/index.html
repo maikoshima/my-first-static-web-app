@@ -16,11 +16,7 @@
 
   <script>
     (async function() {
-        const response = await fetch(`/api/swatest01`);
-      　const contentType = response.headers.get('content-type');
-        console.log(contentType); 
-        console.log(response);
-        const { text } = await response.body();
+        const { text } = await(await fetch(`/api/swatest01`)).text();
         console.log(text);
         document.querySelector('#name').textContent = text;
     }());
